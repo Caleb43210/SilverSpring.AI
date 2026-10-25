@@ -1,55 +1,58 @@
-# Website.AI — Cinematic Dealership Template
+# Website.AI — Authentic Automotive Media Demo
 
-A dealership-neutral React 18 + TypeScript + Vite demonstration. Default name: **Your Dealership**. Website.AI remains the platform name. No API keys, backend, dealership systems, or real customer submissions.
+Dealership-neutral React + TypeScript + Vite demonstration. Default dealer: **Your Dealership**. Website.AI remains the platform. Fictional stock, prices and request forms; no dealership connections or real submissions.
 
-## Preview locally on a Mac
+## Preview on your Mac
 
-1. Get the **website-ai-dealership-template** branch from GitHub (Code → Download ZIP), extract it, and open the folder containing package.json in Codex desktop.
-2. Install Node.js LTS from https://nodejs.org if needed.
-3. Open Terminal, type `cd `, drag the extracted folder into Terminal, and press Return.
-4. Run `npm install` once. For a clean locked install, use `npm ci` instead.
-5. Run `npm run dev`.
-6. Open the exact Local URL printed by Vite, normally http://localhost:5173, in Safari or Chrome. Keep Terminal open. Stop with Control+C.
+1. Download the `website-ai-dealership-template` branch (Code → Download ZIP), extract it, and open the folder containing package.json in Codex.
+2. Install Node.js LTS if needed. Open Terminal in the project folder.
+3. Run `npm install`, then `npm run dev`.
+4. Open the exact Local URL Vite prints, normally http://localhost:5173. Keep Terminal open; stop with Control+C.
 
-If you already cloned this branch, commit/stash local edits first, then `git pull --ff-only origin website-ai-dealership-template`. If you previously downloaded a ZIP, download a fresh copy of this branch to get the redesign and its media. Opening index.html directly will not work.
+If you already cloned this branch, commit/stash local edits, then `git pull --ff-only origin website-ai-dealership-template`. ZIP downloads require a fresh ZIP to obtain updates.
 
-## The new experience
+## Authentic media and honest gaps
 
-- Full-height cinematic hero with local silent MP4, high-quality local fallback poster, pause/play, and autoplay failure handling.
-- An original 10-second virtual-camera motion study rendered from concept imagery; **not moving-car footage**. Replace with licensed driving footage for a production campaign.
-- GSAP 3.13.0 + ScrollTrigger: a desktop pinned editorial chapter, independent parallax layers, scrubbed text emphasis, and restrained reveals. Browser-native scrolling; no scroll hijacking or loading screen.
-- Interactive Performance / Adventure / Everyday showcase, large imagery, crossfades, numbered controls, and direct links to the working vehicle detail dialog.
-- Editorial typography and spacing, mobile-specific layouts, touch-sized controls, and light, practical shopping screens.
-- Original locally bundled JPEGs and MP4; no remote stock-photo or font requests needed for default settings. System fonts avoid font-loading delays.
+All AI-generated automotive images and the concept-image movie are removed. Real reference photos now cover all eight models. Actual exterior/interior photographs replace the old crop-only detail galleries wherever verified interiors were obtained. Photo credits, licenses and exact year/trim differences are visible in Media credits and gallery captions.
 
-## Existing functionality retained
+There are 12 verified vehicle-photo source records (8 exteriors, 4 interiors), plus a real driving clip and poster from Pexels. Four interiors remain unfilled: X5, 911, RAV4 and 3 Series. The X5 exterior's precise model year/facelift also remains unconfirmed. Other photos are same-generation/approximate-year references, not exact stock/trim photos. Those differences are disclosed instead of hidden or filled with synthetic substitutes.
 
-All eight fictional vehicles, filters (price, make, model, mileage, year, body style and condition), sorting, saved vehicles, gallery crop controls, specifications, pricing, adjustable payment estimates, test-drive requests, financing, trade-in, service and contact demos remain available. Forms never send or store customer details. Use fictional form data only. Photography is now explicitly labeled as concept illustration rather than actual stock photos.
+**Binary-download limitation:** the cloud's proxy was unavailable. All 14 source URLs and their published licenses are recorded, but binaries could not be downloaded, visually inspected, or playback-tested here. Remote source-backed media is enabled; failures show a neutral “Photograph unavailable” panel. This is not a fully verified offline media pack.
 
-Use **Customize dealership** in the footer for name, logo URL, accent color, typography, hero image, **hero MP4 URL**, address, phone, and homepage-section visibility. Empty the MP4 field for a still-image hero. Settings are browser-local; Reset template theme restores the defaults.
+The footage is Sergei Skrynnik's real mountain-road driving clip, Pexels #11661703, under the Pexels License. It starts on demand because the verified remote file is UHD. Click Play to view it. Mobile also starts paused; reduced-motion/Save-Data suppress video requests.
 
-## Motion, accessibility, and performance
+## Download and optimize media locally
 
-- Reduced-motion: no video request, no pinning/parallax/reveal or crossfade animation; complete static content and working controls.
-- Save-Data: poster instead of video. Autoplay failures retain the poster and play control.
-- Video pauses when outside the viewport, manually paused, or in a background tab.
-- Desktop pinning only at 1000px and above; mobile retains natural document flow.
-- Scoped GSAP context / matchMedia cleanup prevents duplicate triggers on navigation, resize, or React StrictMode remounts.
-- Native dialog focus management, Escape close, keyboard operable navigation/showcase, labeled controls, and visible focus styles.
-- Silent 1280×720 H.264 fast-start MP4 (~1.2 MB); local JPEGs ~340 KB each, lazy loading below the fold, and reserved media dimensions.
+```bash
+npm run media:sync
+npm run media:audit
+```
+
+The importer honors the system proxy/CA, validates media, prefers 1280px source thumbnails, and records local hashes and acquisition status. It creates a silent max-12-second, 1280px-wide, fast-start H.264 film with ffmpeg. Install ffmpeg from https://ffmpeg.org/download.html if you want the optimized autoplay loop. Without it, photos can still import and the film remains remote/on-demand. Rebuild/reload after import. Failed acquisition never marks a media file as present or creates a substitute.
+
+See `public/media/manifest.json` and `public/media/README.md` for every source, author, license and outstanding slot. User-supplied custom media needs its own rights records.
+
+## Preserved experience
+
+Premium cinematic composition, GSAP/ScrollTrigger pinning, parallax, decoded-image crossfades, native scrolling, responsive navigation, all filters/sorting, saved vehicles, specifications, financing estimates, trade-in, service/contact and test-drive demos remain. Custom dealership identity, color, typography, logo, hero image/video and section visibility remain. Existing browser configuration is migrated away from retired generated defaults without discarding dealer information or custom URLs.
 
 ## Source map
 
-- src/cinematic/CinematicHome.tsx — film hero, pinned editorial chapter, interactive showcase, finder and ownership experiences.
-- src/cinematic/motion.ts — responsive motion preference and minimal typed GSAP browser interface.
-- src/cinematic/cinematic.css — editorial layouts, mobile behavior, motion overrides.
-- src/App.tsx — retained shopping tools, details, calculator, dialogs, forms, and customization.
-- src/dealership/data.ts — fictional inventory, default configuration, filters, payment math.
-- public/media — original replaceable demo media and provenance/readme.
-- public/vendor — official unmodified GSAP and ScrollTrigger bundles and license/source notice. Vendored because the workspace proxy could not install the npm package. No CDN is required; don't add another GSAP copy without removing this one.
+- src/media/catalog.ts — typed manifest access, vehicle binding, legacy-media migration.
+- src/media/Photo.tsx — local/remote delivery and honest failure state.
+- src/media/MediaCredits.tsx — visible credit/license links and gaps.
+- src/cinematic — retained premium homepage and GSAP behavior, now using authentic media.
+- src/dealership/data.ts — fictional stock, filters and payment math.
+- src/App.tsx — shopping UI, real-photo galleries, financing, demos and configuration.
+- scripts/sync-media.mjs — acquisition and optional film optimization.
+- scripts/test-demo.cjs — existing inventory/payment/GSAP checks plus media/license/gallery/migration checks.
 
 ## Validation
 
-`npm run build` and `npx tsc --noEmit -p tsconfig.app.json` pass. Additional checks covered inventory filtering, empty/combined results, payment edge cases, built media existence, GSAP/ScrollTrigger loading, and MP4 format/duration. Browser QA was unavailable in the cloud environment; inspect desktop/mobile locally before production use.
+```bash
+npm run typecheck
+npm run build
+npm test
+```
 
-Media details: public/media/README.md. GSAP source/license references: public/vendor/README.md. Motion API reference: https://gsap.com/docs/v3/GSAP/gsap.matchMedia/ .
+All pass. Tests cover all previous filter/payment/GSAP assertions plus source/credit/license completeness, photo-to-vehicle binding, explicit missing interiors, generated-asset removal and configuration migration. External downloads, rendered browser layouts and playback remain unverified; `media:sync` failed in the cloud with an unreachable proxy, as reported above.
